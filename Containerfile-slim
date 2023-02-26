@@ -1,0 +1,23 @@
+# https://github.com/awesome-containers/static-bash
+ARG STATIC_BASH_VERSION=5.2.15
+ARG STATIC_GAWK_VERSION=4.9.0
+
+FROM ghcr.io/awesome-containers/static-gawk:$STATIC_GAWK_VERSION AS static-gawk
+FROM ghcr.io/awesome-containers/alpine-build-essential:3.17 AS build
+
+WORKDIR /src/gawk
+COPY --from=static-gawk /bin/gawk ./
+
+RUN set -xeu; \
+    strip -s -R .comment -R .gnu.version --strip-unneeded gawk; \
+    upx --no-progress --no-color gawk; \
+    upx -t --no-progress --no-color gawk; \
+    ! ldd gawk && :; \
+    chmod -cR 755 gawk; \
+    chown -cR 0:0 gawk; \
+    ./gawk --version; \
+    mkdir bin; cp gawk bin/gawk; ln -f bin/gawk bin/awk
+
+# slim static gawk image
+FROM ghcr.io/awesome-containers/static-bash:$STATIC_BASH_VERSION-slim AS static-bash
+COPY --from=build /src/gawk/bin/ /bin/
