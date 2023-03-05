@@ -2,9 +2,9 @@
 ARG STATIC_BASH_VERSION=5.2.15
 ARG STATIC_BASH_IMAGE=ghcr.io/awesome-containers/static-bash
 
-# https://github.com/awesome-containers/static-findutils
+# https://github.com/awesome-containers/static-gawk
 ARG STATIC_GAWK_VERSION=5.2.1
-ARG STATIC_GAWK_IMAGE=ghcr.io/awesome-containers/static-findutils
+ARG STATIC_GAWK_IMAGE=ghcr.io/awesome-containers/static-gawk
 
 # https://github.com/awesome-containers/alpine-build-essential
 ARG BUILD_ESSENTIAL_VERSION=3.17
