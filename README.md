@@ -2,7 +2,7 @@
 
 Statically linked [Gawk] container image with [Bash]
 
-> 1.7M
+> 1.7M (1,1M bash)
 
 ```bash
 ghcr.io/awesome-containers/static-gawk:latest
@@ -14,7 +14,7 @@ docker.io/awesomecontainers/static-gawk:5.2.1
 
 Slim statically linked [Gawk] container image with [Bash] packaged with [UPX]
 
-> 849K
+> 849K (578K bash)
 
 ```bash
 ghcr.io/awesome-containers/static-gawk:latest-slim
